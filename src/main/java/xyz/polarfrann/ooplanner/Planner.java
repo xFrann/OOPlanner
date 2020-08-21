@@ -7,5 +7,36 @@ package xyz.polarfrann.ooplanner;
     Main Project Class
 */
 
-public class Planner {
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+public class Planner extends Application {
+
+    private FXMLLoader fxLoader;
+
+    @Override
+    public void start(Stage plannerStage) throws Exception {
+
+        fxLoader = new FXMLLoader(getClass().getResource("/Planner.fxml"));
+
+        Parent rootContainer = fxLoader.load();
+
+        plannerStage.setScene(new Scene(rootContainer));
+        plannerStage.show();
+
+    }
+
+    public FXMLLoader getFxLoader() {
+        return fxLoader;
+    }
+
+    public static void main(String[] args) {
+        PlannerInitializer initializer = new PlannerInitializer();
+        initializer.startDebug();
+        launch(args);
+    }
+
 }
