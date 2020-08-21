@@ -3,6 +3,8 @@ package xyz.polarfrann.ooplanner.stages.preloader;
     PlannerPreloader class for OOPlanner
     Created on 21/08/2020 at 16:46
     by frann
+
+    Singleton Class
 */
 
 import javafx.application.Preloader;
@@ -12,8 +14,11 @@ public class PlannerPreloader extends Preloader {
 
     private PreloaderView view;
 
+    private static PlannerPreloader instance;
+
     @Override
     public void start(Stage loadingStage) {
+        instance = this;
         view = new PreloaderView();
         view.setStage(loadingStage);
         view.loadStageSettings();
@@ -37,5 +42,9 @@ public class PlannerPreloader extends Preloader {
 
     public PreloaderView getPreloaderView() {
         return view;
+    }
+
+    public static PlannerPreloader getInstance() {
+        return instance;
     }
 }

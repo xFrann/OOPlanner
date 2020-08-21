@@ -1,0 +1,27 @@
+.border-pane {
+    -fx-background-color: #303030;
+    -fx-border-width: 1px;
+    -fx-border-style: solid;
+    -fx-border-color: black;
+}
+.progress-bar > .track {
+    -fx-text-box-border: black;
+    -fx-background-insets: 0;
+    -fx-background-color: gray;
+    -fx-control-inner-background: #348a94;
+}
+.progress-bar {
+    -fx-background-insets: 1;
+    -fx-accent: yellow;
+}
+.progress-bar > .bar {
+    -fx-background-insets: 1;
+    -fx-padding: 2px 150px;
+    -fx-accent: #5cf4ff;
+}
+.loading-text {
+    -fx-font-smoothing-type: lcd;
+    -fx-fill: white;
+    -fx-margin: 15px;
+    -fx-font-size: 14px;
+}

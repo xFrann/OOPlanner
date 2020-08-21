@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import xyz.polarfrann.ooplanner.stages.preloader.PlannerPreloader;
 
 public class Planner extends Application {
 
@@ -28,12 +29,19 @@ public class Planner extends Application {
     @Override
     public void init() throws InterruptedException {
         notifyPreloader(new Preloader.ProgressNotification(5));
+        PlannerPreloader.getInstance().getPreloaderView().setLoadingText("Loading Stuff...");
         Thread.sleep(2000);
-        notifyPreloader(new Preloader.ProgressNotification(15));
+        notifyPreloader(new Preloader.ProgressNotification(25));
+        PlannerPreloader.getInstance().getPreloaderView().setLoadingText("Initializing tests...");
         Thread.sleep(2000);
-        notifyPreloader(new Preloader.ProgressNotification(50));
+        notifyPreloader(new Preloader.ProgressNotification(65));
+        PlannerPreloader.getInstance().getPreloaderView().setLoadingText("Almost done...");
         Thread.sleep(2000);
+        notifyPreloader(new Preloader.ProgressNotification(99));
+        PlannerPreloader.getInstance().getPreloaderView().setLoadingText("Done!");
+        Thread.sleep(1000);
         notifyPreloader(new Preloader.ProgressNotification(100));
+
 
     }
 
