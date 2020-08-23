@@ -1,8 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 
-
-<GridPane alignment="CENTER" gridLinesVisible="true" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="xyz.polarfrann.ooplanner.FXController">
-    
-</GridPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="xyz.polarfrann.ooplanner.FXController">
+   <top>
+       <MenuBar accessibleRole="CHECK_MENU_ITEM" style="-fx-background-color: #2e2e2e; -fx-padding: 0px;" stylesheets="@Menu.css" BorderPane.alignment="CENTER">
+           <menus>
+               <Menu id="button" mnemonicParsing="false" text="File">
+                   <items>
+                       <MenuItem mnemonicParsing="false" text="New" />
+                       <MenuItem id="open" mnemonicParsing="false" text="Open">
+                           <accelerator>
+                               <KeyCodeCombination alt="DOWN" code="O" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                       </MenuItem>
+                       <MenuItem mnemonicParsing="false" text="Open Project">
+                           <accelerator>
+                               <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                       </MenuItem>
+                       <SeparatorMenuItem mnemonicParsing="false" />
+                       <MenuItem mnemonicParsing="false" text="Save">
+                           <accelerator>
+                               <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                       </MenuItem>
+                       <MenuItem id="import" mnemonicParsing="false" text="Import" />
+                       <MenuItem id="export" mnemonicParsing="false" text="Export" />
+                       <SeparatorMenuItem mnemonicParsing="false" />
+                       <MenuItem mnemonicParsing="false" text="Restart" />
+                       <MenuItem id="exit" mnemonicParsing="false" text="Exit">
+                           <accelerator>
+                               <KeyCodeCombination alt="DOWN" code="F4" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                       </MenuItem>
+                   </items>
+               </Menu>
+               <Menu id="button" mnemonicParsing="false" text="Edit">
+                   <items>
+                       <MenuItem mnemonicParsing="false" text="Delete" />
+                   </items>
+               </Menu>
+               <Menu id="button" mnemonicParsing="false" text="Help">
+                   <items>
+                       <MenuItem mnemonicParsing="false" text="About" />
+                   </items>
+               </Menu>
+           </menus>
+       </MenuBar>
+   </top>
+   <left>
+      <VBox id="vcontainer" stylesheets="@TreeView.css" BorderPane.alignment="CENTER">
+         <children>
+            <TreeView id="explorer" fx:id="explorer" prefHeight="200.0" prefWidth="200.0" stylesheets="@TreeView.css" VBox.vgrow="ALWAYS" />
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <Pane prefHeight="200.0" prefWidth="395.0" BorderPane.alignment="CENTER" />
+   </center>
+   <bottom>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>

@@ -6,15 +6,13 @@ package xyz.polarfrann.ooplanner.stages.preloader;
 */
 
 import javafx.geometry.Pos;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+import xyz.polarfrann.ooplanner.stages.Decorator;
 
 public class PreloaderView {
 
@@ -22,20 +20,23 @@ public class PreloaderView {
     private ProgressBar progressBar;
     private Text loadingText;
 
-    public void loadStageSettings() {
-        loadingStage.initStyle(StageStyle.UNDECORATED);
-        loadingStage.setResizable(false);
-        loadingStage.toFront();
-        loadingStage.setScene(addCss(createLoadingScene(), "/Preloader.css"));
-        loadingStage.show();
-        centerOnScreen();
+    public void loadStageSettings(Stage loadingStage) {
+        this.loadingStage = loadingStage;
+
+        loadingStage.setScene(addCss(createLoadingScene()));
+
+        Decorator decorator = new Decorator(loadingStage);
+        decorator.setPopupWindow();
+        decorator.showStage();
+        decorator.centerWindow();
     }
-    private Scene addCss(Scene scene, String filePath) {
-        scene.getStylesheets().add(getClass().getResource(filePath).toExternalForm());
+    private Scene addCss(Scene scene) {
+        scene.getStylesheets().add(getClass().getResource("/Preloader.css").toExternalForm());
         return scene;
     }
 
     private Scene createLoadingScene() {
+        //TODO Clean this up somehow
         BorderPane rootBorder = new BorderPane();
         VBox root = new VBox();
         root.setSpacing(10);
@@ -44,24 +45,13 @@ public class PreloaderView {
         progressBar = new ProgressBar();
         root.getStyleClass().add("border-pane");
         progressBar.getStyleClass().add("progress-bar");
-        loadingText = new Text("...");
+        loadingText = new Text();
         loadingText.getStyleClass().add("loading-text");
         root.getChildren().add(progressBar);
         root.getChildren().add(loadingText);
         return new Scene(rootBorder, 450, 100);
     }
 
-    private void centerOnScreen() {
-        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
-        double xPos = (primScreenBounds.getWidth() - loadingStage.getWidth()) / 2;
-        double yPos = (primScreenBounds.getHeight() - loadingStage.getHeight()) / 2;
-        loadingStage.setX(xPos);
-        loadingStage.setY(yPos);
-    }
-
-    public void setStage(Stage stage) {
-        loadingStage = stage;
-    }
 
     public Stage getLoadingStage() {
         return loadingStage;

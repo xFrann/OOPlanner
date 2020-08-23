@@ -1,0 +1,61 @@
+.menu-item > .label {
+	-fx-text-fill: #d9d9d9;
+	-fx-font-size: 13px;
+	-fx-font-family: "Ubuntu";
+
+}
+#open > .label {
+	-fx-graphic: url("/icons/folder.png");
+}
+#import > .label {
+	-fx-graphic: url("/icons/arrow_down.png");
+}
+#export > .label {
+	-fx-graphic: url("/icons/arrow_up.png");
+}
+.menu > .label {
+	-fx-text-fill: #d9d9d9;
+	-fx-font-size: 13px;
+	-fx-font-family: "Ubuntu";
+}
+.menu:hover > .label {
+	-fx-text-fill: white;
+}
+.context-menu {
+	-fx-background-color:  #2e2e2e;
+}
+.menu-bar > .container > .menu-button:hover,
+.menu-bar > .container > .menu-button:focused,
+.menu-bar > .container > .menu-button:showing {
+	-fx-background-color:  #424242;
+
+}
+.context-menu {
+	-fx-background-color:  #2e2e2e;
+	-fx-border-width: 0.5px;
+	-fx-border-color: black;
+}
+.context-menu .accelerator-text {
+	-fx-text-fill: gray;
+	-fx-font-family: "Ubuntu";
+}
+.menu-item {
+	-fx-pref-width: 200px;
+	-fx-background-color: #2e2e2e;
+}
+.menu-item:focused {
+	-fx-background-color: #424242;
+
+}
+.menu-item > .label {
+		-fx-pref-width: 150px;
+}
+.menu-item:focused > .label {
+		-fx-text-fill: white;
+}
+.menu-item:focused > .accelerator-text {
+	-fx-text-fill: gray;
+}
+.menu .separator .line {
+	-fx-border-color: #363636;
+}

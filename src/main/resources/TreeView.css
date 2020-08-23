@@ -1,0 +1,13 @@
+#vcontainer {
+    -fx-border-color: #363636;
+    -fx-border-style: solid;
+    -fx-border-width: 1px;
+    -fx-background-color: #2e2e2e;
+}
+#explorer {
+    -fx-background-insets: 0;
+    -fx-background-color: #2e2e2e;
+}
+#explorer .tree-cell {
+    -fx-background-color: #2e2e2e;
+}
