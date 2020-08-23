@@ -8,57 +8,53 @@ package xyz.polarfrann.ooplanner;
 */
 
 import javafx.application.Application;
-import javafx.application.Preloader;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import xyz.polarfrann.ooplanner.stages.preloader.PlannerPreloader;
+import xyz.polarfrann.ooplanner.stages.preloader.PreloaderController;
+import xyz.polarfrann.ooplanner.stages.Decorator;
 
 public class Planner extends Application {
 
-    private FXMLLoader fxLoader;
+    private static final PlannerInitializer initializer = new PlannerInitializer();
 
     public static void main(String[] args) {
-        PlannerInitializer initializer = new PlannerInitializer();
+        initializer.enablePreloader();
         initializer.startDebug();
-        System.setProperty("javafx.preloader", "xyz.polarfrann.ooplanner.stages.preloader.PlannerPreloader");
         launch();
     }
 
     @Override
     public void init() throws InterruptedException {
-        notifyPreloader(new Preloader.ProgressNotification(5));
-        PlannerPreloader.getInstance().getPreloaderView().setLoadingText("Loading Stuff...");
-        Thread.sleep(2000);
-        notifyPreloader(new Preloader.ProgressNotification(25));
-        PlannerPreloader.getInstance().getPreloaderView().setLoadingText("Initializing tests...");
-        Thread.sleep(2000);
-        notifyPreloader(new Preloader.ProgressNotification(65));
-        PlannerPreloader.getInstance().getPreloaderView().setLoadingText("Almost done...");
-        Thread.sleep(2000);
-        notifyPreloader(new Preloader.ProgressNotification(99));
-        PlannerPreloader.getInstance().getPreloaderView().setLoadingText("Done!");
-        Thread.sleep(1000);
-        notifyPreloader(new Preloader.ProgressNotification(100));
-
-
+        if (initializer.isPreloaderEnabled()) {
+            PreloaderController loadingController = new PreloaderController(this);
+            loadingController.fakeLoad();
+        }
     }
 
     @Override
     public void start(Stage plannerStage) throws Exception {
-
-        fxLoader = new FXMLLoader(getClass().getResource("/Planner.fxml"));
-
+        FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("/Planner.fxml"));
         Parent rootContainer = fxLoader.load();
+        Scene scene = new Scene(rootContainer);
+        scene.getStylesheets().add("/Menu.css");
+        plannerStage.setScene(scene);
 
-        plannerStage.setScene(new Scene(rootContainer));
-        plannerStage.show();
+        Decorator decorator = new Decorator(plannerStage);
+        decorator.decorateWindow(initializer.getVersion(), "icons/dummy-icon.png");
+        decorator.setWindowSize(1000, 1000);
+        decorator.showStage();
+        decorator.centerWindow();
+        /*
+            TODO: Fix the Menu items accelerators labels icons showing up (not intended)
+            TODO: More Menu styling (text padding and submenus)
+            TODO: Finish the menu contents
+            TODO: Make the explorer container resizable
+            TODO: Style the explorer container and tree view
+            TODO: Setup project explorer by working with the tree view
+         */
 
-    }
-
-    public FXMLLoader getFxLoader() {
-        return fxLoader;
     }
 
 }

@@ -20,24 +20,16 @@ public class PlannerPreloader extends Preloader {
     public void start(Stage loadingStage) {
         instance = this;
         view = new PreloaderView();
-        view.setStage(loadingStage);
-        view.loadStageSettings();
+        view.loadStageSettings(loadingStage);
     }
 
     @Override
     public void handleApplicationNotification(PreloaderNotification pn) {
         if (pn instanceof ProgressNotification) {
             ProgressNotification pnt = (ProgressNotification) pn;
-            System.out.println(pnt.getProgress());
             view.getProgressBar().setProgress(pnt.getProgress() / 100);
-            closeIfFinished(pnt.getProgress());
         }
 
-    }
-    private void closeIfFinished(double progress) {
-        if (progress == 100.0) {
-            view.getLoadingStage().close();
-        }
     }
 
     public PreloaderView getPreloaderView() {
