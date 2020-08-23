@@ -1,7 +1,5 @@
 plugins {
-    id 'org.openjfx.javafxplugin' version '0.0.8'
     id 'application'
-    id 'org.beryx.jlink' version '2.21.3'
 }
 
 group 'xyz.polarfrann'
@@ -14,21 +12,9 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
-javafx {
-    version = "14"
-    modules = [ 'javafx.controls', 'javafx.fxml' ]
-}
-jlink {
-    launcher {
-            name = 'OOPlanner'
-    }
-}
 jar {
     manifest {
         attributes("Main-Class": "xyz.polarfrann.ooplanner.Planner")
-    }
-    from {
-        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
 mainClassName = 'xyz.polarfrann.ooplanner.Planner'
