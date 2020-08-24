@@ -21,9 +21,6 @@
 .menu:hover > .label {
 	-fx-text-fill: white;
 }
-.context-menu {
-	-fx-background-color:  #2e2e2e;
-}
 .menu-bar > .container > .menu-button:hover,
 .menu-bar > .container > .menu-button:focused,
 .menu-bar > .container > .menu-button:showing {
@@ -31,7 +28,7 @@
 
 }
 .context-menu {
-	-fx-background-color:  #2e2e2e;
+	-fx-background-color: #242424;
 	-fx-border-width: 0.5px;
 	-fx-border-color: black;
 }
@@ -41,7 +38,7 @@
 }
 .menu-item {
 	-fx-pref-width: 200px;
-	-fx-background-color: #2e2e2e;
+	-fx-background-color: #242424;
 }
 .menu-item:focused {
 	-fx-background-color: #424242;

@@ -5,9 +5,14 @@
     -fx-background-color: #2e2e2e;
 }
 #explorer {
+
     -fx-background-insets: 0;
     -fx-background-color: #2e2e2e;
 }
 #explorer .tree-cell {
+    -fx-text-fill: white;
     -fx-background-color: #2e2e2e;
+}
+#explorer .tree-cell:selected {
+    -fx-background-color:  #424242;
 }

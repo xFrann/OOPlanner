@@ -1,0 +1,20 @@
+.window-button {
+    -fx-background-color: #242424;
+    -fx-text-fill: #d9d9d9;
+    -fx-background-insets: 0;
+    -fx-font-size: 14px;
+}
+.window-button:focused {
+    -fx-background-insets: 0;
+}
+.window-button:hover {
+    -fx-background-color: #424242;
+    -fx-text-fill: white;
+}
+#quit-button:focused {
+    -fx-background-insets: 0;
+}
+#quit-button:hover {
+    -fx-background-insets: 0;
+    -fx-background-color: #e3000f;
+}

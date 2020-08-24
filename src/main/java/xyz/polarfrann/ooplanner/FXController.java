@@ -35,9 +35,9 @@ public class FXController {
 
     }
     public void addToTree(TreeItem<String> item) {
-        try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(Paths.get("/home/frann/Code/"))) {
+        try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(Paths.get("C:\\Users\\Frann\\Desktop\\"))) {
             for (Path path : directoryStream) {
-                TreeItem<String> newItem = new TreeItem<>(path.toString().substring(path.toString().lastIndexOf("/")));
+                TreeItem<String> newItem = new TreeItem<>(path.toString().substring(path.toString().lastIndexOf("\\") + 1));
                 newItem.setExpanded(true);
                 item.getChildren().add(newItem);
             }

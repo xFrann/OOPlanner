@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import xyz.polarfrann.ooplanner.stages.preloader.PreloaderController;
 import xyz.polarfrann.ooplanner.stages.Decorator;
 
@@ -42,6 +43,7 @@ public class Planner extends Application {
         plannerStage.setScene(scene);
 
         Decorator decorator = new Decorator(plannerStage);
+        plannerStage.initStyle(StageStyle.UNDECORATED);
         decorator.decorateWindow(initializer.getVersion(), "icons/dummy-icon.png");
         decorator.setWindowSize(1000, 1000);
         decorator.showStage();
